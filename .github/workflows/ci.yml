@@ -2,9 +2,8 @@ name: CI
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   build:
@@ -20,15 +19,20 @@ jobs:
           node-version: 18
 
       - name: Install server dependencies
-        working-directory: server
-        run: npm install
+        run: |
+          cd server
+          npm install
 
       - name: Install client dependencies
-        working-directory: client
-        run: npm install
+        run: |
+          cd client
+          npm install
 
       - name: Build React app
-        working-directory: client
-        run: npm run build
+        run: |
+          cd client
+          npm run build
+
+
 
 
