@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
@@ -21,7 +21,7 @@ jobs:
 
       - name: Install server dependencies
         run: |
-          cd server/fullstack-todo-app
+          cd server
           npm install
 
       - name: Install client dependencies
@@ -33,3 +33,13 @@ jobs:
         run: |
           cd client
           npm run build
+
+      - name: Run server tests
+        run: |
+          cd server/fullstack-todo-app/server
+          npm test
+
+      - name: Run client tests
+        run: |
+          cd server/fullstack-todo-app/client
+          npm test
