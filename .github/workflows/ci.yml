@@ -2,8 +2,9 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   build:
@@ -16,11 +17,11 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 16
 
       - name: Install server dependencies
         run: |
-          cd server
+          cd server/fullstack-todo-app/server
           npm install
 
       - name: Install client dependencies
@@ -32,6 +33,7 @@ jobs:
         run: |
           cd client
           npm run build
+
 
 
 
